@@ -37,3 +37,5 @@ deletar package-lock.json
 ### Outras dependências
 
 `yarn add styled-components`
+`yarn add react-icons`
+`yarn add axios`
