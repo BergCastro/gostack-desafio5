@@ -20,3 +20,6 @@
 - `Airbnb ...`
 - `Javascript`
 - `Y + enter`
+
+deletar package-lock.json
+`yarn`
