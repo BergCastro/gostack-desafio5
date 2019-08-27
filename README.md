@@ -7,3 +7,16 @@
 ### Eslint
 
 `yarn add eslint -D`
+
+#### Inicializando Eslint
+
+`yarn eslint --init`
+
+- `To check syntax, find problems, and enforce code style`
+- `Javascript Modules`
+- `React`
+- `Browser`
+- `Use popular style guide`
+- `Airbnb ...`
+- `Javascript`
+- `Y + enter`
