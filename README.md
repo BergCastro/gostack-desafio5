@@ -23,3 +23,7 @@
 
 deletar package-lock.json
 `yarn`
+
+#### Configurando Prettier
+
+`yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D`
