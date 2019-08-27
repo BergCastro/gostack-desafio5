@@ -33,3 +33,7 @@ deletar package-lock.json
 #### instalando react-router-dom
 
 `yarn add react-router-dom`
+
+### Outras dependências
+
+`yarn add styled-components`
