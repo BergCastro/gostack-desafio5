@@ -27,3 +27,9 @@ deletar package-lock.json
 #### Configurando Prettier
 
 `yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D`
+
+### Routes
+
+#### instalando react-router-dom
+
+`yarn add react-router-dom`
