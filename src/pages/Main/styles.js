@@ -19,7 +19,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form`
+export const Form = styled.form.attrs(props => ({}))`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -31,6 +31,13 @@ export const Form = styled.form`
     border-radius: 4px;
     font-size: 16px;
   }
+  ${props =>
+    !props.repoExists &&
+    css`
+      input {
+        border: 1px solid red;
+      }
+    `}
 `;
 
 const rotate = keyframes`
