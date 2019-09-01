@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FaGithubAlt, FaPlus, FaSpinner } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import { Form, SubmitButton, List } from './styles';
+import { Form, SubmitButton, List, Message } from './styles';
 import Container from '../../components/Container';
 import api from '../../services/api';
 
@@ -11,6 +11,7 @@ export default class Main extends Component {
     repositories: [],
     loading: false,
     repositoryExists: true,
+    msg: '',
   };
 
   componentDidMount() {
@@ -33,10 +34,22 @@ export default class Main extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    this.setState({ loading: true });
+    this.setState({
+      loading: true,
+      msg: '',
+    });
     const { newRepo, repositories } = this.state;
+    // console.log('repositories', repositories[0].name);
+    // console.log('newRepo', newRepo);
 
     try {
+      const repoExist = repositories.find(
+        repo => repo.name.toLowerCase() === newRepo.toLowerCase()
+      );
+
+      if (repoExist) {
+        throw new Error('Repositório já existe na lista');
+      }
       const response = await api.get(`/repos/${newRepo}`);
       const data = {
         name: response.data.full_name,
@@ -47,15 +60,25 @@ export default class Main extends Component {
         loading: false,
       });
     } catch (error) {
+      if (error.message === 'Request failed with status code 404') {
+        error.message = 'Repositório não encontrado';
+      }
       this.setState({
         repositoryExists: false,
         loading: false,
+        msg: error.message,
       });
     }
   };
 
   render() {
-    const { newRepo, loading, repositories, repositoryExists } = this.state;
+    const {
+      newRepo,
+      loading,
+      repositories,
+      repositoryExists,
+      msg,
+    } = this.state;
     return (
       <Container>
         <h1>
@@ -70,7 +93,7 @@ export default class Main extends Component {
             onChange={this.handleInputChange}
           />
 
-          <SubmitButton loading={loading}>
+          <SubmitButton loadingValue={loading}>
             {loading ? (
               <FaSpinner color="#FFF" size={14} />
             ) : (
@@ -78,6 +101,8 @@ export default class Main extends Component {
             )}
           </SubmitButton>
         </Form>
+        {msg !== '' && <Message>{msg}</Message>}
+
         <List>
           {repositories.map(repo => (
             <li key={repo.name}>

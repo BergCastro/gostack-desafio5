@@ -19,7 +19,7 @@ export const Container = styled.div`
   }
 `;
 
-export const Form = styled.form.attrs(props => ({}))`
+export const Form = styled.form`
   margin-top: 30px;
   display: flex;
   flex-direction: row;
@@ -30,6 +30,9 @@ export const Form = styled.form.attrs(props => ({}))`
     padding: 10px 15px;
     border-radius: 4px;
     font-size: 16px;
+  }
+  span {
+    flex-wrap: wrap;
   }
   ${props =>
     !props.repoExists &&
@@ -51,7 +54,7 @@ const rotate = keyframes`
 
 export const SubmitButton = styled.button.attrs(props => ({
   type: 'submit',
-  disabled: props.loading,
+  disabled: props.loadingValue,
 }))`
   background: #7159c1;
   border: 0;
@@ -68,7 +71,7 @@ export const SubmitButton = styled.button.attrs(props => ({
     opacity: 0.6;
   }
   ${props =>
-    props.loading &&
+    props.loadingValue &&
     css`
       svg {
         animation: ${rotate} 2s linear infinite;
@@ -95,4 +98,13 @@ export const List = styled.ul`
       text-decoration: none;
     }
   }
+`;
+
+export const Message = styled.span`
+  display: flex;
+  flex-direction: row;
+  font-size: 10px;
+  color: red;
+  padding-left: 15px;
+  padding-top: 4px;
 `;

@@ -1,42 +1,50 @@
-## Roteiro para desenvolver aplicações React
+<p align="center">
+<a href="https://rocketseat.com.br/bootcamp" alt="Bootcamp Rocketseat">
+  <img src="https://skylab.rocketseat.com.br/api/files/1560759053914.svg" height="120px"></a></p>
 
-### Iniciando o projeto:
+# Rocketseat GoStack - Desafio 03
 
-`yarn create react-app nome_projeto`
+https://rocketseat.com.br/bootcamp
 
-### Eslint
+## Description
 
-`yarn add eslint -D`
+API Meetapp for the Rocketseat Bootcamp GoStack.
 
-#### Inicializando Eslint
+## Features
 
-`yarn eslint --init`
+- JWT Authentication
+- Database Postgres
+- Database MongoDB
+- Queue with Redis for sendind emails.
 
-- `To check syntax, find problems, and enforce code style`
-- `Javascript Modules`
-- `React`
-- `Browser`
-- `Use popular style guide`
-- `Airbnb ...`
-- `Javascript`
-- `Y + enter`
+## Installing
 
-deletar package-lock.json
-`yarn`
+```
+cd gostack-desafio3
+docker-compose build
+yarn
+```
 
-#### Configurando Prettier
+### Running migrations Database
 
-`yarn add prettier eslint-config-prettier eslint-plugin-prettier babel-eslint -D`
+```
+docker-compose up
+yarn sequelize db:migrate
+```
 
-### Routes
+### Setup .env file
 
-#### instalando react-router-dom
+Rename the file `.env-example` to `.env` !
+Edit the file with your informations!
 
-`yarn add react-router-dom`
+## Running
 
-### Outras dependências
+`docker-compose up`
 
-`yarn add styled-components`
-`yarn add react-icons`
-`yarn add axios`
-`yarn add prop-types`
+## Author
+
+- Lindemberg Nunes de Castro
+
+## License
+
+MIT
